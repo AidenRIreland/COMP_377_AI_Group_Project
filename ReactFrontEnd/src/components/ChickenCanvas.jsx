@@ -3,7 +3,7 @@ import "../styles.css";
 
 export default function ChickenCanvas() {
   useEffect(() => {
-    import("../legacy_chicken/index.jsx");
+    import("../chicken_model/index.jsx");
   }, []);
 
   return (
