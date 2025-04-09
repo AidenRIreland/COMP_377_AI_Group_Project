@@ -36,16 +36,18 @@ export default function ChickenInput() {
   };
 
   return (
-    <div className="input-container">
-      <input
-        className="input-box"
-        placeholder="Enter current price of eggs"
-        value={input}
-        onChange={handleChange}
-      />
-      <button onClick={handlePredict}>Predict</button>
-      <div className="output-box">
-        {predicted && <p>{predicted}</p>}
+    <div data-aos="zoom-out">
+      <div className="input-container">
+        <input
+          className="input-box"
+          placeholder="Enter current price of eggs"
+          value={input}
+          onChange={handleChange}
+        />
+        <button onClick={handlePredict}>Predict</button>
+        <div className="output-box">
+          {predicted && <p>{predicted}</p>}
+        </div>
       </div>
     </div>
   );
