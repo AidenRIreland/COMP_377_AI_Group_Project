@@ -68,3 +68,21 @@
   font-size: 1rem;
   color: #ccc;
 }
+.greydiant {
+  background: linear-gradient(-45deg, #bf243d, #e79134, #5ebd5f, #0d1212);
+  background-size: 300% 300%;
+  animation: greydiantAnim 10s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes greydiantAnim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
