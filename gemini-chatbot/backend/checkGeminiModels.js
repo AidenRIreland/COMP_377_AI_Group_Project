@@ -14,7 +14,7 @@ const listModels = async () => {
       }
     )
 
-    console.log("✅ Available Models:\n")
+    console.log("Available Models:\n")
     response.data.models.forEach((model, index) => {
       console.log(`${index + 1}. ${model.name}`)
       if (model.supportedGenerationMethods) {
@@ -23,7 +23,7 @@ const listModels = async () => {
       }
     })
   } catch (err) {
-    console.error("❌ Error listing models:", err.response?.data || err.message)
+    console.error("Error listing models:", err.response?.data || err.message)
   }
 }
 
