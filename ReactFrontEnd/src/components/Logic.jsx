@@ -17,7 +17,7 @@ export default function ChickenInput() {
     <div className="input-container">
       <input
         className="input-box"
-        placeholder="Current price"
+        placeholder="Enter current price of egg's"
         value={input}
         onChange={handleChange}
       />
