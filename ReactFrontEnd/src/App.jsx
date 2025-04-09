@@ -14,16 +14,18 @@ import 'aos/dist/aos.css';
 function App() {
   useEffect(() => {
     AOS.init({
-      duration: 1000, //duration
+      duration: 2000, //duration
       once: true
     });
   }, []);
   return (
-    <div className="container">
-      <Header/>
-      <ChickenCanvas />
-      <Logic/>
-      <Footer/>
+    <div className="greydiant">
+      <div className="container">
+        <Header/>
+        <ChickenCanvas />
+        <Logic/>
+        <Footer/>
+      </div>
     </div>
   );
 }
