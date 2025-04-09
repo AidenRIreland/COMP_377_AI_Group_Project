@@ -1,7 +1,7 @@
 import { useState } from 'react'
 const Header = () => {
   return (
-    <header>
+    <header data-aos="fade-down">
         <h5>COMP 337 Group 6 W25</h5>
       <h1>Ontario Egg Predictor</h1>
       <br/>
