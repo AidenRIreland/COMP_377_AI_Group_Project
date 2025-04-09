@@ -13,29 +13,29 @@ export default function ChickenInput() {
   };
 
   const handlePredict = async () => {
-    if (!input) return;
-  
-    try {
-      const response = await fetch("http://localhost:5002/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: `$${input}`,
-        }),
-      });
-  
-      const result = await response.json();
-      if (result.reply) {
-        setPredicted(result.reply);
-      } else {
-        setPredicted("Error: No reply received from server");
-      }
-    } catch (err) {
-      setPredicted("Error: Could not connect to the server");
+  if (!input) return;
+
+  try {
+    const response = await fetch("http://localhost:5002/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: `$${input}`,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.reply) {
+      setPredicted(result.reply);
+    } else {
+      setPredicted("Error: No reply received from server");
     }
-  };
+  } catch (err) {
+    setPredicted("Error: Could not connect to the server");
+  }
+};
 
   return (
     <div className="input-container">

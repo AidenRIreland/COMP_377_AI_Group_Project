@@ -11,7 +11,7 @@ export const getPredictedPriceFromFlask = async (currentPrice) => {
       current_price: [currentPrice]
     });
 
-    console.log("📡 Flask raw response:", response.data);
+    console.log("Flask raw response:", response.data);
 
     // Make sure response contains the key
     if (!response.data || response.data.predicted_price === undefined) {
@@ -20,7 +20,7 @@ export const getPredictedPriceFromFlask = async (currentPrice) => {
 
     return response.data.predicted_price;
   } catch (error) {
-    console.error("❌ Error fetching from Flask:", error.message);
+    console.error("Error fetching from Flask:", error.message);
     throw new Error("Failed to get prediction from Flask API.");
   }
 };
