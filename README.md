@@ -9,5 +9,5 @@ frontend
 backend Predict
 - cd C:\Users\Maste\OneDrive\Desktop\COMP377\Project\Design\Predict_Backend>
 - venv\Scripts\activate
-- pip install flask numpy pandas keras tensorflow flask-cors scikit-learn
+- pip install flask flask-cors scikit-learn pandas numpy tensorflow
 - python app.py
