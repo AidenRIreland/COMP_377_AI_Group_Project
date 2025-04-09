@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import tensorflow as tf
 import numpy as np
 from sklearn.preprocessing import MinMaxScaler
@@ -7,13 +8,13 @@ import pandas as pd
 
 # Initialize Flask app
 app = Flask(__name__)
-
+CORS(app) 
 # Load the trained TensorFlow model
-MODEL_PATH = "Predict_Backend/egg_price_model.h5"
+MODEL_PATH = "egg_price_model.h5"
 model = tf.keras.models.load_model(MODEL_PATH, custom_objects={'mse': MeanSquaredError()})
 
 # Load the historical data to fit the scaler
-data_path = "Predict_Backend/egg-price-predictor/18100245.csv"
+data_path = "egg-price-predictor/18100245.csv"
 df = pd.read_csv(data_path)
 
 # Filter rows with egg prices
