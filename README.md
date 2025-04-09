@@ -11,3 +11,4 @@ backend Predict
 - venv\Scripts\activate
 - pip install flask numpy pandas keras tensorflow flask-cors scikit-learn
 - python app.py
+
