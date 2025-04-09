@@ -14,21 +14,23 @@ export default function ChickenInput() {
 
   const handlePredict = async () => {
     if (!input) return;
-
+  
     try {
-      const response = await fetch("http://127.0.0.1:5000/predict", { //Change the link depending on where the python back end is running on
+      const response = await fetch("http://localhost:5002/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ current_price: [parseFloat(input)] }),
+        body: JSON.stringify({
+          message: `$${input}`,
+        }),
       });
-
-      const data = await response.json();
-      if (data.predicted_price !== undefined) {
-        setPredicted(`$${data.predicted_price.toFixed(2)} is the predicted price`);
+  
+      const result = await response.json();
+      if (result.reply) {
+        setPredicted(result.reply);
       } else {
-        setPredicted("Error: No prediction received");
+        setPredicted("Error: No reply received from server");
       }
     } catch (err) {
       setPredicted("Error: Could not connect to the server");
@@ -36,18 +38,16 @@ export default function ChickenInput() {
   };
 
   return (
-    <div data-aos="zoom-out">
-      <div className="input-container">
-        <input
-          className="input-box"
-          placeholder="Enter current price of eggs"
-          value={input}
-          onChange={handleChange}
-        />
-        <button onClick={handlePredict}>Predict</button>
-        <div className="output-box">
-          {predicted && <p>{predicted}</p>}
-        </div>
+    <div className="input-container">
+      <input
+        className="input-box"
+        placeholder="Enter current price of eggs"
+        value={input}
+        onChange={handleChange}
+      />
+      <button onClick={handlePredict}>Predict</button>
+      <div className="output-box">
+        {predicted && <p>{predicted}</p>}
       </div>
     </div>
   );

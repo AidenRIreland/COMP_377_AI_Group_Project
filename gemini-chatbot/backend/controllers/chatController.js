@@ -1,6 +1,3 @@
-
-
-
 import { getPredictedPriceFromFlask } from '../services/flaskPrediction.js';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dotenv from 'dotenv';
@@ -13,7 +10,14 @@ export const handleChat = async (req, res) => {
   console.log("Incoming price input from user:", message);
 
   try {
-    const currentPrice = parseFloat(message);
+    // Extract the price from the message (e.g., "The predicted egg price is $1.50")
+    const priceMatch = message.match(/\$(\d*\.?\d+)/);
+    if (!priceMatch) {
+      return res.json({
+        reply: "Please include a price in the format $X.XX (e.g., $1.50)."
+      });
+    }
+    const currentPrice = parseFloat(priceMatch[1]);
 
     if (isNaN(currentPrice)) {
       return res.json({
@@ -59,6 +63,3 @@ Craft a friendly, intelligent response that explains this predicted price to the
     res.status(500).json({ error: err.message });
   }
 };
-
-
-
